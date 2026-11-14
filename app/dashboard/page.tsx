@@ -6,11 +6,13 @@ import { ConsumerDashboard } from '@/components/dashboard/ConsumerDashboard';
 import { readDemoSession } from '@/lib/login/demoSession';
 import { dashboardCopy } from '@/lib/dashboard/data';
 import { useLang } from '@/lib/login/hooks';
+import { GlobalLoader } from '@/components/login/Loader';
 
 export default function DashboardPage() {
   const router = useRouter();
   const { lang } = useLang();
   const [consumerMobile, setConsumerMobile] = useState<string | null>(null);
+  const [checkingSession, setCheckingSession] = useState(true);
 
   useEffect(() => {
     const session = readDemoSession();
@@ -18,16 +20,17 @@ export default function DashboardPage() {
       setConsumerMobile(session.mobile);
     } else {
       router.replace('/login');
+      return;
     }
+    setCheckingSession(false);
   }, [router]);
 
-  if (!consumerMobile) {
-    return (
-      <main className="grid min-h-screen place-items-center bg-slate-50 px-5 text-center text-slate-700 dark:bg-slate-950 dark:text-slate-200">
-        <p>{dashboardCopy[lang].loginRequired}</p>
-      </main>
-    );
-  }
-
-  return <ConsumerDashboard key={consumerMobile} consumerMobile={consumerMobile} />;
+  return (
+    <>
+      <GlobalLoader label={dashboardCopy[lang].loading} visible={checkingSession || !consumerMobile} />
+      {consumerMobile && !checkingSession && (
+        <ConsumerDashboard key={consumerMobile} consumerMobile={consumerMobile} />
+      )}
+    </>
+  );
 }

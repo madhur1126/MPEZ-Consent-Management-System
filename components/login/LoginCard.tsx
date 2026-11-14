@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
 import type { Messages } from '@/lib/login/i18n';
-import { OtpInput } from './OtpInput';
+import { Button, Input, OTPInput } from '@/components/common';
+import { LoadingSpinner } from './Loader';
 
 const MOBILE_RE = /^[6-9]\d{9}$/;
-const OTP_LENGTH = 6;
 const OTP_COOLDOWN_SECONDS = 60;
 
 type StatusKey =
@@ -36,43 +36,42 @@ function Avatar() {
 
 export function LoginCard({ t, onRequestOtp, onVerifyOtp }: LoginCardProps) {
   const [mobile, setMobile] = useState('');
-  const [otp, setOtp] = useState<string[]>(() => Array(OTP_LENGTH).fill(''));
+  const [otp, setOtp] = useState<string[]>(() => Array(6).fill(''));
   const [otpRequested, setOtpRequested] = useState(false);
   const [status, setStatus] = useState<Status>(null);
   const [loading, setLoading] = useState(false);
-  const [secondsRemaining, setSecondsRemaining] = useState(0);
+  const [loadingAction, setLoadingAction] = useState<'request' | 'verify' | null>(null);
   const [otpError, setOtpError] = useState(false);
   const mobileRef = useRef<HTMLInputElement>(null);
   const verificationInProgress = useRef(false);
+  const requestInProgress = useRef(false);
 
-  useEffect(() => {
-    if (!otpRequested || secondsRemaining === 0) return;
-    const timer = window.setTimeout(() => {
-      setSecondsRemaining((seconds) => Math.max(0, seconds - 1));
-    }, 1000);
-    return () => window.clearTimeout(timer);
-  }, [otpRequested, secondsRemaining]);
-
-  async function requestOtp() {
+  async function requestOtp(): Promise<boolean> {
+    if (requestInProgress.current) return false;
+    requestInProgress.current = true;
     setLoading(true);
+    setLoadingAction('request');
     setStatus(null);
     try {
       await onRequestOtp?.(mobile);
       setOtpRequested(true);
-      setOtp(Array(OTP_LENGTH).fill(''));
+      setOtp(Array(6).fill(''));
       setOtpError(false);
-      setSecondsRemaining(OTP_COOLDOWN_SECONDS);
       setStatus({ kind: 'success', key: 'otpSent' });
+      return true;
     } catch {
       setStatus({ kind: 'error', key: 'requestFailed' });
+      return false;
     } finally {
+      requestInProgress.current = false;
       setLoading(false);
+      setLoadingAction(null);
     }
   }
 
   async function submitMobile(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (otpRequested) return;
+    if (otpRequested || loading || requestInProgress.current) return;
     if (!MOBILE_RE.test(mobile)) {
       setStatus({ kind: 'error', key: 'invalidMobile' });
       mobileRef.current?.focus();
@@ -81,10 +80,9 @@ export function LoginCard({ t, onRequestOtp, onVerifyOtp }: LoginCardProps) {
     await requestOtp();
   }
 
-  async function verifyOtp(nextOtp: string[]) {
-    const code = nextOtp.join('');
+  async function verifyOtp(code: string) {
     if (
-      code.length !== OTP_LENGTH ||
+      code.length !== 6 ||
       verificationInProgress.current ||
       loading
     ) {
@@ -93,17 +91,19 @@ export function LoginCard({ t, onRequestOtp, onVerifyOtp }: LoginCardProps) {
 
     verificationInProgress.current = true;
     setLoading(true);
+    setLoadingAction('verify');
     setStatus(null);
     setOtpError(false);
     try {
       await onVerifyOtp?.(mobile, code);
     } catch {
       setOtpError(true);
-      setOtp(Array(OTP_LENGTH).fill(''));
+      setOtp(Array(6).fill(''));
       setStatus({ kind: 'error', key: 'invalidOtp' });
     } finally {
       verificationInProgress.current = false;
       setLoading(false);
+      setLoadingAction(null);
     }
   }
 
@@ -111,13 +111,11 @@ export function LoginCard({ t, onRequestOtp, onVerifyOtp }: LoginCardProps) {
     setOtp(next);
     setOtpError(false);
     setStatus(null);
-    if (next.every((digit) => digit !== '')) void verifyOtp(next);
   }
 
   function changeNumber() {
     setOtpRequested(false);
-    setOtp(Array(OTP_LENGTH).fill(''));
-    setSecondsRemaining(0);
+    setOtp(Array(6).fill(''));
     setStatus(null);
     setOtpError(false);
   }
@@ -126,13 +124,10 @@ export function LoginCard({ t, onRequestOtp, onVerifyOtp }: LoginCardProps) {
   const messageClass = `mt-2 min-h-[22px] px-0.5 text-sm leading-snug ${
     status?.kind === 'success' ? 'text-emerald-700 dark:text-emerald-300' : 'text-login-err'
   }`;
-  const primaryButton =
-    'mt-2.5 inline-flex h-[58px] w-full items-center justify-center gap-3 rounded-2xl bg-login-btn text-xl font-semibold text-login-btn-ink shadow-[0_12px_24px_-12px_var(--btn)] transition hover:bg-login-btn-hover active:translate-y-px disabled:cursor-wait disabled:opacity-70';
-
   return (
     <section
       aria-labelledby="login-title"
-      className="flex h-[455px] min-w-0 flex-col justify-center rounded-[26px] border border-login-card-line bg-login-card px-5 py-6 text-center shadow-login-card backdrop-blur-[6px] sm:h-[477px] sm:rounded-[32px] sm:px-9 sm:py-8"
+      className="flex min-h-[455px] min-w-0 flex-col justify-center rounded-[26px] border border-login-card-line bg-login-card px-5 py-6 text-center shadow-login-card backdrop-blur-[6px] sm:min-h-[477px] sm:rounded-[32px] sm:px-9 sm:py-8"
     >
       {!otpRequested && <Avatar />}
       <h2 id="login-title" className="text-3xl font-extrabold leading-tight text-login-ink sm:text-4xl [html[lang=hi]_&]:leading-snug">
@@ -145,49 +140,51 @@ export function LoginCard({ t, onRequestOtp, onVerifyOtp }: LoginCardProps) {
       )}
 
       <form onSubmit={submitMobile} noValidate className={`${otpRequested ? 'mt-3' : 'mt-6'} text-left`}>
-        <label htmlFor="mobile" className="mb-2 block text-[17px] font-bold text-login-ink">
-          {t.mobile}
-        </label>
-        <div
-          className={`flex h-[58px] items-center gap-3.5 rounded-[14px] border-[1.5px] bg-login-field px-4 transition focus-within:border-login-btn focus-within:shadow-[0_0_0_4px_color-mix(in_srgb,var(--btn)_22%,transparent)] ${
-            status?.key === 'invalidMobile' ? 'border-login-err' : 'border-login-field-line'
+        <Input
+          ref={mobileRef}
+          id="mobile"
+          name="mobile"
+          format="mobile"
+          readOnly={otpRequested}
+          value={mobile}
+          label={t.mobile}
+          placeholder={t.mobilePlaceholder}
+          aria-invalid={status?.key === 'invalidMobile'}
+          aria-describedby="login-msg"
+          onChange={(event) => {
+            setMobile(event.target.value.replace(/\D/g, '').slice(0, 10));
+            if (status) setStatus(null);
+          }}
+          leftIcon={
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-[22px] w-[22px] text-login-ink">
+              <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1Z" />
+            </svg>
+          }
+          labelClassName="text-[17px] font-bold text-login-ink"
+          className={`!gap-3.5 !rounded-[14px] !border-[1.5px] !bg-login-field !px-4 !text-login-text focus-within:!border-login-btn focus-within:!ring-0 focus-within:!shadow-[0_0_0_4px_color-mix(in_srgb,var(--btn)_22%,transparent)] ${
+            status?.key === 'invalidMobile' ? '!border-login-err' : '!border-login-field-line'
           }`}
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-[22px] w-[22px] flex-none text-login-ink">
-            <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1Z" />
-          </svg>
-          <input
-            ref={mobileRef}
-            id="mobile"
-            name="mobile"
-            type="tel"
-            inputMode="numeric"
-            autoComplete="tel-national"
-            maxLength={10}
-            readOnly={otpRequested}
-            value={mobile}
-            placeholder={t.mobilePlaceholder}
-            aria-invalid={status?.key === 'invalidMobile'}
-            aria-describedby="login-msg"
-            onChange={(e) => {
-              setMobile(e.target.value.replace(/\D/g, '').slice(0, 10));
-              if (status) setStatus(null);
-            }}
-            className="h-full min-w-0 flex-1 bg-transparent text-lg text-login-text outline-none placeholder:text-login-placeholder read-only:cursor-not-allowed"
-          />
-        </div>
+          inputClassName="!h-full !bg-transparent !text-lg !text-login-text placeholder:!text-login-placeholder"
+        />
 
         {!otpRequested && (
           <>
             <p id="login-msg" role="alert" className={messageClass}>
               {message}
             </p>
-            <button type="submit" disabled={loading} aria-busy={loading} className={primaryButton}>
-              <span>{loading ? t.sendingOtp : t.sendOtp}</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-[22px] w-[22px]">
-                <path d="M4 12h15M13 6l6 6-6 6" />
-              </svg>
-            </button>
+            <Button
+              type="submit"
+              loading={loading && loadingAction === 'request'}
+              disabled={loading && loadingAction !== 'request'}
+              className="!mt-2.5 !w-full !gap-3 !rounded-2xl !bg-login-btn !text-xl !text-login-btn-ink !shadow-[0_12px_24px_-12px_var(--btn)] hover:!bg-login-btn-hover"
+              rightIcon={
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-[22px] w-[22px]">
+                  <path d="M4 12h15M13 6l6 6-6 6" />
+                </svg>
+              }
+            >
+              {loading ? t.sendingOtp : t.sendOtp}
+            </Button>
           </>
         )}
       </form>
@@ -198,13 +195,47 @@ export function LoginCard({ t, onRequestOtp, onVerifyOtp }: LoginCardProps) {
             {t.otpSent}
           </div>
           <label className="mb-2 mt-3 block text-[17px] font-bold text-login-ink">{t.otpLabel}</label>
-          <OtpInput
+          <OTPInput
+            length={6}
             value={otp}
             onChange={changeOtp}
+            onComplete={(code) => void verifyOtp(code)}
+            autoSubmit
             label={t.otpLabel}
             disabled={loading}
             invalid={otpError}
+            resend={{
+              onResend: requestOtp,
+              label: t.resendOtp,
+              countdownLabel: (seconds) => (
+                <>
+                  {t.resendIn}{' '}
+                  {String(Math.floor(seconds / 60)).padStart(2, '0')}:
+                  {String(seconds % 60).padStart(2, '0')}
+                </>
+              ),
+              cooldownSeconds: OTP_COOLDOWN_SECONDS,
+              disabled: loading,
+              errorLabel: t.resendFailed,
+            }}
+            footerAction={
+              <Button
+                type="button"
+                variant="ghost"
+                size="small"
+                onClick={changeNumber}
+                className="!min-h-9 !px-0 font-semibold text-login-ink underline underline-offset-4"
+              >
+                {t.changeNumber}
+              </Button>
+            }
           />
+          {loadingAction === 'verify' && (
+            <p role="status" aria-live="polite" className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-login-ink">
+              <LoadingSpinner className="h-4 w-4" />
+              {t.verifyingOtp}
+            </p>
+          )}
           <p id="login-msg" role="alert" aria-live="polite" className={messageClass}>
             {status?.key === 'otpSent' ? '' : message}
           </p>
@@ -213,27 +244,6 @@ export function LoginCard({ t, onRequestOtp, onVerifyOtp }: LoginCardProps) {
               {t.demoOtp} <strong className="font-bold">123456</strong>
             </div>
           )}
-          <div className="mt-2 flex flex-wrap items-center justify-between gap-3 text-sm">
-            {secondsRemaining > 0 ? (
-              <span className="text-login-muted">
-                {t.resendIn}{' '}
-                {String(Math.floor(secondsRemaining / 60)).padStart(2, '0')}:
-                {String(secondsRemaining % 60).padStart(2, '0')}
-              </span>
-            ) : (
-              <button
-                type="button"
-                disabled={loading}
-                onClick={() => void requestOtp()}
-                className="font-semibold text-login-ink underline underline-offset-4 disabled:opacity-60"
-              >
-                {loading ? t.sendingOtp : t.resendOtp}
-              </button>
-            )}
-            <button type="button" onClick={changeNumber} className="font-semibold text-login-ink underline underline-offset-4">
-              {t.changeNumber}
-            </button>
-          </div>
         </div>
       )}
     </section>

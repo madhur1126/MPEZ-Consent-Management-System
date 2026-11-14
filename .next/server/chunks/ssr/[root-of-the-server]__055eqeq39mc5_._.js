@@ -1,0 +1,9 @@
+module.exports=[18622,(a,b,c)=>{b.exports=a.x("next/dist/compiled/next-server/app-page-turbo.runtime.prod.js",()=>require("next/dist/compiled/next-server/app-page-turbo.runtime.prod.js"))},33290,a=>{"use strict";var b=a.i(7997),c=a.i(71618);a.s(["default",0,function({children:a}){return(0,b.jsxs)("html",{lang:"en",suppressHydrationWarning:!0,children:[(0,b.jsx)("head",{children:(0,b.jsx)(c.default,{id:"mpez-theme-init",strategy:"beforeInteractive",children:`try {
+            const savedTheme = localStorage.getItem('login-theme');
+            const darkTheme = savedTheme === 'dark' || (savedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            document.documentElement.classList.toggle('dark', darkTheme);
+          } catch {
+            document.documentElement.classList.toggle('dark', window.matchMedia('(prefers-color-scheme: dark)').matches);
+          }`})}),(0,b.jsx)("body",{children:a})]})},"metadata",0,{title:"Consent Management System",description:"Manage your consent for communication, service updates and important notifications."}])},70864,function(a){a.n(a.i(33290))},44536,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(11857);a.n(d("[project]/node_modules/next/dist/client/script.js"))},11153,a=>{"use strict";var b=a.i(44536);a.n(b)},24951,(a,b,c)=>{"use strict";b.exports=a.r(18622)},7997,(a,b,c)=>{"use strict";b.exports=a.r(24951).vendored["react-rsc"].ReactJsxRuntime},11857,(a,b,c)=>{"use strict";b.exports=a.r(24951).vendored["react-rsc"].ReactServerDOMTurbopackServer},71618,(a,b,c)=>{b.exports=a.r(11153)}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__055eqeq39mc5_._.js.map
