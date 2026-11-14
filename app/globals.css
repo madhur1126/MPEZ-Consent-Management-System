@@ -1,3 +1,88 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mpez-loader {
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(59, 130, 246, 0.18), transparent 48%),
+    linear-gradient(145deg, #f8fbff 0%, #e8f2ff 55%, #d7e8ff 100%);
+  animation: mpez-loader-in 220ms ease-out both;
+}
+
+.dark .mpez-loader {
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(47, 111, 224, 0.25), transparent 48%),
+    linear-gradient(145deg, #071329 0%, #0c1a38 55%, #102854 100%);
+}
+
+.mpez-loader-content {
+  animation: mpez-loader-content-in 450ms ease-out both;
+}
+
+.mpez-loader-exit {
+  animation: mpez-loader-out 220ms ease-in both;
+}
+
+.mpez-loader-logo {
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.12), 0 18px 55px rgba(30, 91, 180, 0.18);
+  animation: mpez-logo-breathe 2.4s ease-in-out infinite;
+}
+
+.dark .mpez-loader-logo {
+  background: rgba(16, 36, 75, 0.78);
+  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.22), 0 18px 55px rgba(37, 99, 235, 0.24);
+}
+
+.mpez-spinner {
+  display: inline-block;
+  flex: none;
+  border: 2px solid rgba(37, 99, 235, 0.2);
+  border-top-color: #0b3f91;
+  border-radius: 9999px;
+  animation: mpez-spin 750ms linear infinite;
+}
+
+.dark .mpez-spinner {
+  border-color: rgba(147, 197, 253, 0.22);
+  border-top-color: #60a5fa;
+}
+
+.mpez-spinner.mpez-spinner-inverse {
+  border-color: rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+}
+
+@keyframes mpez-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes mpez-loader-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes mpez-loader-content-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mpez-loader-out {
+  to { opacity: 0; }
+}
+
+@keyframes mpez-logo-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mpez-loader,
+  .mpez-loader-content,
+  .mpez-loader-exit,
+  .mpez-loader-logo,
+  .mpez-spinner {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

@@ -84,13 +84,13 @@ function ConsentCard({ question, lang, copy, value, onChange, disabled = false }
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
-        className: "rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-200 dark:border-slate-700 dark:bg-slate-900 sm:p-6",
+        className: "min-w-0 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm transition hover:border-blue-200 dark:border-slate-700 dark:bg-slate-900 sm:p-6",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-start gap-3",
+                className: "flex min-w-0 items-start gap-2 sm:gap-3",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "grid h-10 w-10 flex-none place-items-center rounded-xl bg-[#EAF3FF] text-[#0B3F91] dark:bg-blue-950 dark:text-blue-300",
+                        className: "grid h-9 w-9 flex-none place-items-center rounded-xl bg-[#EAF3FF] text-[#0B3F91] dark:bg-blue-950 dark:text-blue-300 sm:h-10 sm:w-10",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$dashboard$2f$DashboardIcon$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DashboardIcon"], {
                             name: question.icon
                         }, void 0, false, {
@@ -118,7 +118,7 @@ function ConsentCard({ question, lang, copy, value, onChange, disabled = false }
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: "text-base font-bold text-slate-900 dark:text-white",
+                                        className: "break-words text-sm font-bold text-slate-900 dark:text-white sm:text-base",
                                         children: question.category[lang]
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/ConsentCard.tsx",
@@ -132,7 +132,7 @@ function ConsentCard({ question, lang, copy, value, onChange, disabled = false }
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "mt-3 text-sm leading-6 text-slate-700 dark:text-slate-300 sm:text-[15px]",
+                                className: "mt-2 text-sm leading-5 text-slate-700 dark:text-slate-300 sm:mt-3 sm:leading-6 sm:text-[15px]",
                                 children: question.question[lang]
                             }, void 0, false, {
                                 fileName: "[project]/components/dashboard/ConsentCard.tsx",
@@ -153,7 +153,7 @@ function ConsentCard({ question, lang, copy, value, onChange, disabled = false }
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("fieldset", {
                 disabled: disabled,
-                className: "mt-5 grid gap-3 sm:grid-cols-2",
+                className: "mt-4 grid gap-2 sm:mt-5 sm:grid-cols-2 sm:gap-3",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("legend", {
                         className: "sr-only",
@@ -167,7 +167,7 @@ function ConsentCard({ question, lang, copy, value, onChange, disabled = false }
                         const selected = value === choice.value;
                         const positive = choice.value === 'yes';
                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                            className: `flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border px-3 py-2.5 text-sm font-semibold transition ${selected ? positive ? 'border-blue-500 bg-blue-50 text-[#0B3F91] ring-1 ring-blue-200 dark:border-blue-400 dark:bg-blue-950/60 dark:text-blue-200' : 'border-slate-500 bg-slate-100 text-slate-800 ring-1 ring-slate-300 dark:border-slate-400 dark:bg-slate-800 dark:text-slate-100' : 'border-slate-200 bg-white text-slate-700 hover:border-blue-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300'} ${disabled ? 'cursor-default' : ''}`,
+                            className: `flex min-h-11 min-w-0 cursor-pointer items-center gap-2 rounded-xl border px-2.5 py-2 text-xs font-semibold transition sm:min-h-12 sm:gap-3 sm:px-3 sm:py-2.5 sm:text-sm ${selected ? positive ? 'border-blue-500 bg-blue-50 text-[#0B3F91] ring-1 ring-blue-200 dark:border-blue-400 dark:bg-blue-950/60 dark:text-blue-200' : 'border-slate-500 bg-slate-100 text-slate-800 ring-1 ring-slate-300 dark:border-slate-400 dark:bg-slate-800 dark:text-slate-100' : 'border-slate-200 bg-white text-slate-700 hover:border-blue-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300'} ${disabled ? 'cursor-default' : ''}`,
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     type: "radio",
@@ -373,7 +373,7 @@ function isSubmission(value) {
 function PersonalInformation({ lang, copy, details }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         "aria-labelledby": "consumer-info-title",
-        className: "rounded-3xl border border-blue-100 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7",
+        className: "min-w-0 rounded-3xl border border-blue-100 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-wrap items-end justify-between gap-2",
@@ -390,7 +390,7 @@ function PersonalInformation({ lang, copy, details }) {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 id: "consumer-info-title",
-                                className: "mt-1 text-2xl font-bold text-slate-950 dark:text-white",
+                                className: "mt-1 text-xl font-bold text-slate-950 dark:text-white sm:text-2xl",
                                 children: copy.consumerInfo
                             }, void 0, false, {
                                 fileName: "[project]/components/dashboard/ConsumerDashboard.tsx",
@@ -428,9 +428,9 @@ function PersonalInformation({ lang, copy, details }) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("dl", {
-                className: "mt-6 grid gap-3 sm:grid-cols-2",
+                className: "mt-4 grid min-w-0 gap-2 sm:mt-6 sm:grid-cols-2 sm:gap-3",
                 children: details.map((detail)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex min-w-0 items-center gap-3 rounded-2xl border border-blue-100 bg-[#F5F9FF] p-3.5 dark:border-slate-700 dark:bg-slate-800/70",
+                        className: "flex min-w-0 items-center gap-2 rounded-2xl border border-blue-100 bg-[#F5F9FF] p-2.5 dark:border-slate-700 dark:bg-slate-800/70 sm:gap-3 sm:p-3.5",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "grid h-10 w-10 flex-none place-items-center rounded-xl bg-white text-[#0B3F91] shadow-sm dark:bg-slate-900 dark:text-blue-300",
@@ -518,11 +518,11 @@ function ConsentProgress({ answered, total, copy }) {
     const pending = total - answered;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         "aria-labelledby": "summary-title",
-        className: "rounded-3xl border border-blue-100 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7",
+        className: "rounded-3xl border border-blue-100 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                 id: "summary-title",
-                className: "text-xl font-bold text-slate-950 dark:text-white",
+                className: "text-lg font-bold text-slate-950 dark:text-white sm:text-xl",
                 children: copy.summary
             }, void 0, false, {
                 fileName: "[project]/components/dashboard/ConsumerDashboard.tsx",
@@ -530,7 +530,7 @@ function ConsentProgress({ answered, total, copy }) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "mt-5 grid grid-cols-3 gap-3",
+                className: "mt-4 grid grid-cols-3 gap-2 sm:mt-5 sm:gap-3",
                 children: [
                     {
                         label: copy.total,
@@ -545,7 +545,7 @@ function ConsentProgress({ answered, total, copy }) {
                         value: pending
                     }
                 ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "rounded-2xl bg-[#F3F8FF] p-3 text-center dark:bg-slate-800 sm:p-4",
+                        className: "min-w-0 rounded-2xl bg-[#F3F8FF] p-2 text-center dark:bg-slate-800 sm:p-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-xl font-extrabold text-[#0B3F91] dark:text-blue-300 sm:text-2xl",
@@ -556,7 +556,7 @@ function ConsentProgress({ answered, total, copy }) {
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "mt-1 text-xs font-medium text-slate-600 dark:text-slate-300 sm:text-sm",
+                                className: "mt-1 break-words text-[11px] font-medium text-slate-600 dark:text-slate-300 sm:text-sm",
                                 children: item.label
                             }, void 0, false, {
                                 fileName: "[project]/components/dashboard/ConsumerDashboard.tsx",
@@ -575,7 +575,7 @@ function ConsentProgress({ answered, total, copy }) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "mt-5",
+                className: "mt-4 sm:mt-5",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "mb-2 flex justify-between text-xs font-semibold text-slate-600 dark:text-slate-300",
@@ -737,19 +737,19 @@ function ConsumerDashboard({ consumerMobile }) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-                className: "mx-auto w-full max-w-[1320px] px-4 pb-14 pt-8 sm:px-6 lg:pt-12",
+                className: "mx-auto w-full max-w-[1320px] px-3 pb-8 pt-3 sm:px-6 sm:pb-14 sm:pt-8 lg:pt-12",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mb-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-blue-100 bg-white/90 p-4 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90",
+                        className: "mb-4 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-blue-100 bg-white/90 p-3 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 sm:mb-6 sm:gap-4 sm:p-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex items-center gap-3",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "grid h-11 w-11 place-items-center rounded-full bg-[#EAF3FF] text-[#0B3F91] dark:bg-blue-950 dark:text-blue-300",
+                                        className: "grid h-9 w-9 place-items-center rounded-full bg-[#EAF3FF] text-[#0B3F91] dark:bg-blue-950 dark:text-blue-300 sm:h-11 sm:w-11",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$dashboard$2f$DashboardIcon$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DashboardIcon"], {
                                             name: "user",
-                                            className: "h-6 w-6"
+                                            className: "h-5 w-5 sm:h-6 sm:w-6"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dashboard/ConsumerDashboard.tsx",
                                             lineNumber: 219,
@@ -761,7 +761,7 @@ function ConsumerDashboard({ consumerMobile }) {
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "font-bold text-slate-900 dark:text-white",
+                                        className: "text-sm font-bold text-slate-900 dark:text-white sm:text-base",
                                         children: copy.greeting
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/ConsumerDashboard.tsx",
@@ -777,7 +777,7 @@ function ConsumerDashboard({ consumerMobile }) {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 type: "button",
                                 onClick: logout,
-                                className: "inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 text-sm font-semibold text-slate-700 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-red-950",
+                                className: "inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border border-slate-200 px-3 text-xs font-semibold text-slate-700 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-red-950 sm:min-h-11 sm:px-4 sm:text-sm",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$dashboard$2f$DashboardIcon$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DashboardIcon"], {
                                         name: "logout"
@@ -801,7 +801,7 @@ function ConsumerDashboard({ consumerMobile }) {
                     }, this),
                     submission ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                         "aria-labelledby": "success-title",
-                        className: "mx-auto max-w-3xl rounded-3xl border border-emerald-200 bg-white p-6 text-center shadow-lg dark:border-emerald-900 dark:bg-slate-900 sm:p-10",
+                        className: "mx-auto max-w-3xl rounded-3xl border border-emerald-200 bg-white p-4 text-center shadow-lg dark:border-emerald-900 dark:bg-slate-900 sm:p-10",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "mx-auto grid h-16 w-16 place-items-center rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",
@@ -902,10 +902,10 @@ function ConsumerDashboard({ consumerMobile }) {
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-                                className: "mb-6",
+                                className: "mb-4 sm:mb-6",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-sm font-bold uppercase tracking-[0.16em] text-[#168BEE]",
+                                        className: "text-xs font-bold uppercase tracking-[0.12em] text-[#168BEE] sm:text-sm sm:tracking-[0.16em]",
                                         children: copy.greeting
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/ConsumerDashboard.tsx",
@@ -913,7 +913,7 @@ function ConsumerDashboard({ consumerMobile }) {
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                        className: "mt-2 text-3xl font-extrabold tracking-tight text-[#0B3F91] dark:text-blue-200 sm:text-4xl",
+                                        className: "mt-1.5 break-words text-2xl font-extrabold leading-tight tracking-tight text-[#0B3F91] dark:text-blue-200 sm:mt-2 sm:text-4xl",
                                         children: copy.welcomeTitle
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/ConsumerDashboard.tsx",
@@ -921,7 +921,7 @@ function ConsumerDashboard({ consumerMobile }) {
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "mt-3 max-w-4xl text-base leading-7 text-slate-700 dark:text-slate-300",
+                                        className: "mt-2 max-w-4xl text-sm leading-5 text-slate-700 dark:text-slate-300 sm:mt-3 sm:text-base sm:leading-7",
                                         children: copy.welcomeDescription
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/ConsumerDashboard.tsx",
@@ -936,7 +936,7 @@ function ConsumerDashboard({ consumerMobile }) {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 role: "note",
-                                className: "mb-7 flex items-start gap-3 rounded-2xl border border-blue-200 bg-[#EAF3FF] p-4 text-sm font-medium leading-6 text-[#0B3F91] dark:border-blue-900 dark:bg-blue-950/70 dark:text-blue-100",
+                                className: "mb-5 flex items-start gap-2 rounded-2xl border border-blue-200 bg-[#EAF3FF] p-3 text-sm font-medium leading-5 text-[#0B3F91] dark:border-blue-900 dark:bg-blue-950/70 dark:text-blue-100 sm:mb-7 sm:gap-3 sm:p-4 sm:leading-6",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$dashboard$2f$DashboardIcon$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DashboardIcon"], {
                                         name: "shield",
@@ -970,14 +970,14 @@ function ConsumerDashboard({ consumerMobile }) {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                                 "aria-labelledby": "consent-title",
-                                className: "mt-9",
+                                className: "mt-6 sm:mt-9",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "mb-5",
+                                        className: "mb-4 sm:mb-5",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                 id: "consent-title",
-                                                className: "text-2xl font-extrabold text-[#0B3F91] dark:text-blue-200 sm:text-3xl",
+                                                className: "text-xl font-extrabold text-[#0B3F91] dark:text-blue-200 sm:text-3xl",
                                                 children: copy.consentTitle
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dashboard/ConsumerDashboard.tsx",
@@ -985,7 +985,7 @@ function ConsumerDashboard({ consumerMobile }) {
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "mt-2 max-w-4xl text-sm leading-6 text-slate-700 dark:text-slate-300 sm:text-base",
+                                                className: "mt-1.5 max-w-4xl text-sm leading-5 text-slate-700 dark:text-slate-300 sm:mt-2 sm:text-base sm:leading-6",
                                                 children: copy.consentDescription
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dashboard/ConsumerDashboard.tsx",
@@ -999,7 +999,7 @@ function ConsumerDashboard({ consumerMobile }) {
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "grid gap-4 lg:grid-cols-2",
+                                        className: "grid min-w-0 gap-3 sm:gap-4 lg:grid-cols-2",
                                         children: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$dashboard$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["consentQuestions"].map((question, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$dashboard$2f$ConsentCard$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ConsentCard"], {
                                                 question: question,
                                                 lang: lang,
@@ -1023,7 +1023,7 @@ function ConsumerDashboard({ consumerMobile }) {
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-                                className: "mt-8 grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]",
+                                className: "mt-6 grid gap-4 sm:mt-8 sm:gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ConsentProgress, {
                                         answered: answered,
@@ -1035,7 +1035,7 @@ function ConsumerDashboard({ consumerMobile }) {
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "rounded-3xl border border-blue-100 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7",
+                                        className: "rounded-3xl border border-blue-100 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                 className: "flex cursor-pointer items-start gap-3 text-sm leading-6 text-slate-700 dark:text-slate-300",
@@ -1499,13 +1499,13 @@ function Header({ t, lang, onLangChange, theme, onThemeChange }) {
         className: "relative z-30 bg-login-header",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "mx-auto flex w-full max-w-[1320px] flex-wrap items-center justify-between gap-x-6 gap-y-4 px-4 py-3.5 sm:px-6",
+                className: "mx-auto flex w-full max-w-[1320px] flex-col items-stretch gap-2 px-3 py-2 sm:px-6 sm:py-3.5 md:flex-row md:items-center md:justify-between md:gap-x-6",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex min-w-0 items-center gap-3 sm:gap-4",
+                        className: "order-2 flex min-w-0 items-center gap-2 sm:gap-4 md:order-1",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$login$2f$Logo$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Logo"], {
-                                className: "h-[46px] w-[46px] flex-none sm:h-[58px] sm:w-[58px]"
+                                className: "h-10 w-10 flex-none sm:h-[58px] sm:w-[58px] md:h-12 md:w-12 lg:h-[58px] lg:w-[58px]"
                             }, void 0, false, {
                                 fileName: "[project]/components/login/Header.tsx",
                                 lineNumber: 36,
@@ -1515,10 +1515,10 @@ function Header({ t, lang, onLangChange, theme, onThemeChange }) {
                                 className: "min-w-0",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex flex-wrap items-center gap-x-2 gap-y-1",
+                                        className: "flex flex-wrap items-center gap-x-1 gap-y-1 sm:gap-x-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-xl font-extrabold leading-none tracking-tight text-login-ink sm:text-[27px]",
+                                                className: "text-[15px] font-extrabold leading-none tracking-tight text-login-ink min-[360px]:text-base sm:text-[27px] md:text-[22px] lg:text-[27px]",
                                                 children: "MPEZ"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/login/Header.tsx",
@@ -1526,7 +1526,7 @@ function Header({ t, lang, onLangChange, theme, onThemeChange }) {
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "rounded-md bg-blue-100 px-2 py-1 text-[10px] font-bold leading-none text-blue-800 sm:text-xs",
+                                                className: "rounded-md bg-blue-100 px-1.5 py-1 text-[9px] font-bold leading-none text-blue-800 sm:px-2 sm:text-xs md:text-[10px]",
                                                 children: "CMS"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/login/Header.tsx",
@@ -1534,7 +1534,7 @@ function Header({ t, lang, onLangChange, theme, onThemeChange }) {
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-xl font-bold leading-none tracking-tight text-login-ink sm:text-[27px]",
+                                                className: "text-[15px] font-bold leading-none tracking-tight text-login-ink min-[360px]:text-base sm:text-[27px] md:text-[22px] lg:text-[27px]",
                                                 children: "Consent Portal"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/login/Header.tsx",
@@ -1548,7 +1548,7 @@ function Header({ t, lang, onLangChange, theme, onThemeChange }) {
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "mt-1.5 text-[11px] font-medium leading-tight text-login-ink/70 sm:text-[14px]",
+                                        className: "mt-1 text-[9px] font-semibold leading-tight text-login-muted min-[360px]:text-[10px] sm:mt-1.5 sm:text-[14px] md:text-xs lg:text-[14px]",
                                         children: "Empowering Consumers. Ensuring Transparency."
                                     }, void 0, false, {
                                         fileName: "[project]/components/login/Header.tsx",
@@ -1568,18 +1568,18 @@ function Header({ t, lang, onLangChange, theme, onThemeChange }) {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex w-full items-center justify-between gap-3 sm:w-auto sm:gap-5",
+                        className: "order-1 flex w-full shrink-0 items-center justify-between gap-3 md:order-2 md:w-auto md:justify-normal md:gap-5",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 role: "group",
                                 "aria-label": t.language,
-                                className: "inline-flex rounded-full bg-login-seg p-[5px] shadow-[0_6px_18px_-8px_rgba(8,48,120,0.45)]",
+                                className: "inline-flex shrink-0 rounded-full bg-login-seg p-1 shadow-[0_6px_18px_-8px_rgba(8,48,120,0.45)] sm:p-[5px]",
                                 children: LANGS.map(({ value, label })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         type: "button",
                                         lang: value,
                                         "aria-pressed": lang === value,
                                         onClick: ()=>onLangChange(value),
-                                        className: `min-h-10 rounded-full px-3.5 py-2 text-[15px] font-semibold leading-snug transition-colors sm:px-[18px] sm:text-[17px] ${lang === value ? 'bg-login-seg-active text-login-seg-active-ink' : 'text-login-seg-ink'}`,
+                                        className: `min-h-9 rounded-full px-3 py-1.5 text-sm font-semibold leading-snug transition-colors sm:min-h-10 sm:px-[18px] sm:py-2 sm:text-[17px] ${lang === value ? 'bg-login-seg-active text-login-seg-active-ink' : 'text-login-seg-ink'}`,
                                         children: label
                                     }, value, false, {
                                         fileName: "[project]/components/login/Header.tsx",
@@ -1594,7 +1594,7 @@ function Header({ t, lang, onLangChange, theme, onThemeChange }) {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 role: "group",
                                 "aria-label": t.theme,
-                                className: "inline-flex rounded-full bg-[linear-gradient(135deg,var(--track-a),var(--track-b))] p-[5px] shadow-[0_6px_18px_-8px_rgba(8,48,120,0.55)]",
+                                className: "inline-flex shrink-0 rounded-full bg-[linear-gradient(135deg,var(--track-a),var(--track-b))] p-1 shadow-[0_6px_18px_-8px_rgba(8,48,120,0.55)] sm:p-[5px]",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         type: "button",
@@ -1689,7 +1689,7 @@ function Header({ t, lang, onLangChange, theme, onThemeChange }) {
                 "aria-hidden": "true",
                 viewBox: "0 0 1600 34",
                 preserveAspectRatio: "none",
-                className: "pointer-events-none absolute -bottom-6 left-0 block h-6 w-full lg:-bottom-[33px] lg:h-[34px]",
+                className: "pointer-events-none absolute -bottom-3 left-0 block h-3 w-full lg:-bottom-[33px] lg:h-[34px]",
                 style: {
                     fill: 'var(--header-bg)'
                 },

@@ -55,9 +55,9 @@ const consumerProfiles: Record<string, { name: string; number: string; ivrs: str
   },
 };
 
-export function getConsumerDetails(mobile: string) {
+export function getConsumerDetails(mobile: string, lang: Lang = 'en') {
   const profile = consumerProfiles[mobile] ?? {
-    name: 'Consumer',
+    name: lang === 'hi' ? 'उपभोक्ता' : 'Consumer',
     number: `MPEZ${mobile.slice(-6)}`,
     ivrs: `IVRS${mobile.slice(-6)}`,
     aadhaarSuffix: '0000',
@@ -192,6 +192,7 @@ export type DashboardCopy = {
   yes: string;
   no: string;
   storageError: string;
+  loading: string;
 };
 
 export const dashboardCopy: Record<Lang, DashboardCopy> = {
@@ -233,6 +234,7 @@ export const dashboardCopy: Record<Lang, DashboardCopy> = {
     yes: 'Yes',
     no: 'No',
     storageError: 'Your response could not be saved in this browser. Please check your browser storage settings and try again.',
+    loading: 'Loading consumer information...',
   },
   hi: {
     greeting: 'स्वागत है, उपभोक्ता!',
@@ -272,6 +274,7 @@ export const dashboardCopy: Record<Lang, DashboardCopy> = {
     yes: 'हाँ',
     no: 'नहीं',
     storageError: 'आपकी प्रतिक्रिया इस ब्राउज़र में सहेजी नहीं जा सकी। ब्राउज़र स्टोरेज सेटिंग जाँचकर फिर से प्रयास करें।',
+    loading: 'उपभोक्ता की जानकारी लोड हो रही है...',
   },
 };
 

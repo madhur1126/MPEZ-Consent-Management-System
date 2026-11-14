@@ -20,6 +20,12 @@ export interface Messages {
   resendOtp: string;
   resendIn: string;
   sendingOtp: string;
+  verifyingOtp: string;
+  resendFailed: string;
+  portalName: string;
+  tagline: string;
+  officialPortal: string;
+  loading: string;
   language: string;
   theme: string;
   light: string;
@@ -47,6 +53,12 @@ export const messages: Record<Lang, Messages> = {
     resendOtp: 'Resend OTP',
     resendIn: 'Resend OTP in',
     sendingOtp: 'Sending...',
+    verifyingOtp: 'Verifying...',
+    resendFailed: 'Could not resend the OTP. Please try again.',
+    portalName: 'Consent Portal',
+    tagline: 'Empowering Consumers. Ensuring Transparency.',
+    officialPortal: 'Official DISCOM Consumer Portal',
+    loading: 'Loading',
     language: 'Language',
     theme: 'Theme',
     light: 'Light theme',
@@ -72,6 +84,12 @@ export const messages: Record<Lang, Messages> = {
     resendOtp: 'OTP फिर से भेजें',
     resendIn: 'OTP फिर से भेजें',
     sendingOtp: 'भेजा जा रहा है...',
+    verifyingOtp: 'सत्यापित किया जा रहा है...',
+    resendFailed: 'OTP फिर से नहीं भेजा जा सका। कृपया फिर से प्रयास करें।',
+    portalName: 'सहमति पोर्टल',
+    tagline: 'उपभोक्ताओं को सशक्त बनाना। पारदर्शिता सुनिश्चित करना।',
+    officialPortal: 'आधिकारिक DISCOM उपभोक्ता पोर्टल',
+    loading: 'लोड हो रहा है',
     language: 'भाषा',
     theme: 'थीम',
     light: 'लाइट थीम',

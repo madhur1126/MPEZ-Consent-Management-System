@@ -4,6 +4,7 @@ import type { Lang } from '@/lib/login/i18n';
 import type { ConsentAnswer, DashboardCopy } from '@/lib/dashboard/data';
 import { consentQuestions } from '@/lib/dashboard/data';
 import { ConsentCard } from './ConsentCard';
+import { Button } from '@/components/common';
 
 export function ConsentConfirmationModal({
   lang,
@@ -57,23 +58,26 @@ export function ConsentConfirmationModal({
           {error && <p role="alert" className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800 dark:bg-red-950 dark:text-red-200">{error}</p>}
         </div>
         <footer className="flex flex-col-reverse gap-3 border-t border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950 sm:flex-row sm:justify-end sm:px-6">
-          <button
+          <Button
             type="button"
+            variant="outline"
+            size="medium"
             onClick={onClose}
             disabled={saving}
-            className="min-h-11 rounded-xl border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-700 hover:bg-slate-100 disabled:opacity-60 dark:border-slate-600 dark:bg-slate-900 dark:text-white"
+            className="!rounded-xl !border-slate-300 !bg-white !px-5 !text-sm !text-slate-700 hover:!bg-slate-100 dark:!border-slate-600 dark:!bg-slate-900 dark:!text-white"
           >
             {readOnly ? copy.close : copy.goBack}
-          </button>
+          </Button>
           {!readOnly && (
-            <button
+            <Button
               type="button"
-              onClick={onConfirm}
+              onClick={() => void onConfirm()}
+              loading={saving}
               disabled={saving}
-              className="min-h-11 rounded-xl bg-[#0B3F91] px-5 text-sm font-semibold text-white hover:bg-[#168BEE] disabled:opacity-60"
+              className="!rounded-xl !bg-[#0B3F91] !px-5 !text-sm !text-white hover:!bg-[#168BEE]"
             >
-              {saving ? '…' : copy.confirmSubmit}
-            </button>
+              {copy.confirmSubmit}
+            </Button>
           )}
         </footer>
       </section>
