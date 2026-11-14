@@ -1,0 +1,100 @@
+/* [project]/styles/login-theme.css [app-client] (css) */
+.login-root {
+  --sky-a: #eaf4fe;
+  --sky-b: #cfe5fb;
+  --sky-c: #9fcbf6;
+  --sky-side: #6cb4f7;
+  --glow: #ffc455;
+  --glow-2: #ffeaa8;
+  --glow-text: #ffffffa6;
+  --header-bg: #fff;
+  --ink: #0a2f7a;
+  --text: #14264a;
+  --muted: #2c3d5f;
+  --card: #fffffff0;
+  --card-line: #fffc;
+  --shadow: 0 30px 70px -28px #08307873;
+  --icon-bg: #cde2fa;
+  --logo-edge: #0b3a85;
+  --field-bg: #f8fbff;
+  --field-line: #aab9d0;
+  --placeholder: #5d6b85;
+  --btn: #0b3f91;
+  --btn-hover: #168bee;
+  --btn-ink: #fff;
+  --gold: #f6c21a;
+  --wave: #0a4a9e;
+  --seg-bg: #fff;
+  --seg-active: #0b3f91;
+  --seg-active-ink: #fff;
+  --seg-ink: #0b2f6e;
+  --track-a: #0b2b63;
+  --track-b: #143f86;
+  --thumb: #fff;
+  --sun: #f59e0b;
+  --moon: #e8f0ff;
+  --tower: #16294f;
+  --tower-far: #c9622a;
+  --station: #3b5a8c;
+  --grass-a: #6aa543;
+  --grass-b: #3f7d2c;
+  --tree: #2f6b2a;
+  --err: #b42318;
+}
+
+.dark .login-root {
+  --sky-a: #08122b;
+  --sky-b: #0f2350;
+  --sky-c: #183a74;
+  --sky-side: #1b4a94;
+  --glow: #e08a3c;
+  --glow-2: #f3b46a;
+  --glow-text: #0000;
+  --header-bg: #0c1a38;
+  --ink: #dbe8ff;
+  --text: #e4ecfb;
+  --muted: #b4c4e2;
+  --card: #0d1b38eb;
+  --card-line: #78a0e640;
+  --shadow: 0 30px 70px -28px #000000b3;
+  --icon-bg: #1b3a70;
+  --logo-edge: #5b8de8;
+  --field-bg: #0a1730;
+  --field-line: #3a5488;
+  --placeholder: #8ea2c8;
+  --btn: #2f6fe0;
+  --btn-hover: #4a86f0;
+  --btn-ink: #fff;
+  --gold: #f6c21a;
+  --wave: #0a2a63;
+  --seg-bg: #10224a;
+  --seg-active: #2f6fe0;
+  --seg-active-ink: #fff;
+  --seg-ink: #cfe0ff;
+  --track-a: #0a1733;
+  --track-b: #14295a;
+  --thumb: #25427d;
+  --sun: #f6b84a;
+  --moon: #e8f0ff;
+  --tower: #050b1a;
+  --tower-far: #b8692f;
+  --station: #2a4474;
+  --grass-a: #1f4a22;
+  --grass-b: #16361a;
+  --tree: #12301a;
+  --err: #ff8a80;
+  --lightningcss-light: ;
+  --lightningcss-dark: initial;
+  color-scheme: dark;
+}
+
+.login-sky {
+  background: radial-gradient(ellipse 60% 50% at 100% 18%, var(--sky-side) 0%, transparent 70%),
+    linear-gradient(180deg, var(--sky-a) 0%, var(--sky-b) 42%, var(--sky-c) 100%);
+}
+
+.login-text-glow {
+  text-shadow: 0 0 28px var(--glow-text);
+}
+
+/*# sourceMappingURL=styles_login-theme_css_1igg3k2-ikub5._.single.css.map*/
