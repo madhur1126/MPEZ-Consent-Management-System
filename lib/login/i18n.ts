@@ -30,6 +30,35 @@ export interface Messages {
   theme: string;
   light: string;
   dark: string;
+  hotline: string;
+  contactEmail: string;
+  textSize: string;
+  decreaseText: string;
+  resetText: string;
+  increaseText: string;
+  navHome: string;
+  navAbout: string;
+  navNotices: string;
+  navHelp: string;
+  primaryNavigation: string;
+  notifications: string;
+  search: string;
+  menu: string;
+  noticeLabel: string;
+  noticeLive: string;
+  noticeManage: string;
+  noticeControl: string;
+  consumerLogin: string;
+  featureSecure: string;
+  featureNotifications: string;
+  featureControl: string;
+  featureQuick: string;
+  benefitControlTitle: string;
+  benefitControlDescription: string;
+  benefitTransparencyTitle: string;
+  benefitTransparencyDescription: string;
+  benefitServicesTitle: string;
+  benefitServicesDescription: string;
 }
 
 export const messages: Record<Lang, Messages> = {
@@ -63,6 +92,35 @@ export const messages: Record<Lang, Messages> = {
     theme: 'Theme',
     light: 'Light theme',
     dark: 'Dark theme',
+    hotline: '1800-233-1266 / 1912 (Toll Free)',
+    contactEmail: 'mpez.consent@mpez.gov.in',
+    textSize: 'Text size',
+    decreaseText: 'Decrease text size',
+    resetText: 'Reset text size',
+    increaseText: 'Increase text size',
+    navHome: 'Home',
+    navAbout: 'About CMS',
+    navNotices: 'Notices',
+    navHelp: 'Help & Support',
+    primaryNavigation: 'Main navigation',
+    notifications: 'Notifications',
+    search: 'Search',
+    menu: 'Open navigation menu',
+    noticeLabel: 'NOTICES',
+    noticeLive: 'Consent Management System is now live.',
+    noticeManage: 'Manage your consent, service updates and notifications securely.',
+    noticeControl: 'Your data, your control.',
+    consumerLogin: 'Consumer Login',
+    featureSecure: 'Secure & Trusted',
+    featureNotifications: 'Service Notifications',
+    featureControl: 'Your Data, Your Control',
+    featureQuick: 'Quick & Easy Access',
+    benefitControlTitle: 'Greater Control',
+    benefitControlDescription: 'Manage your consent anytime',
+    benefitTransparencyTitle: 'Complete Transparency',
+    benefitTransparencyDescription: 'Know how your data is used',
+    benefitServicesTitle: 'Better Services',
+    benefitServicesDescription: 'Get important updates securely',
   },
   hi: {
     system: 'सहमति प्रबंधन प्रणाली',
@@ -94,5 +152,34 @@ export const messages: Record<Lang, Messages> = {
     theme: 'थीम',
     light: 'लाइट थीम',
     dark: 'डार्क थीम',
+    hotline: '1800-233-1266 / 1912 (टोल फ्री)',
+    contactEmail: 'mpez.consent@mpez.gov.in',
+    textSize: 'अक्षर आकार',
+    decreaseText: 'अक्षर छोटे करें',
+    resetText: 'अक्षर आकार रीसेट करें',
+    increaseText: 'अक्षर बड़े करें',
+    navHome: 'होम',
+    navAbout: 'CMS के बारे में',
+    navNotices: 'सूचनाएँ',
+    navHelp: 'सहायता',
+    primaryNavigation: 'मुख्य नेविगेशन',
+    notifications: 'सूचनाएँ',
+    search: 'खोजें',
+    menu: 'नेविगेशन मेनू खोलें',
+    noticeLabel: 'सूचनाएँ',
+    noticeLive: 'सहमति प्रबंधन प्रणाली अब शुरू हो गई है।',
+    noticeManage: 'अपनी सहमति, सेवा अपडेट और सूचनाएँ सुरक्षित रूप से प्रबंधित करें।',
+    noticeControl: 'आपका डेटा, आपका नियंत्रण।',
+    consumerLogin: 'उपभोक्ता लॉगिन',
+    featureSecure: 'सुरक्षित और विश्वसनीय',
+    featureNotifications: 'सेवा सूचनाएँ',
+    featureControl: 'आपका डेटा, आपका नियंत्रण',
+    featureQuick: 'आसान और तेज़ पहुँच',
+    benefitControlTitle: 'अधिक नियंत्रण',
+    benefitControlDescription: 'अपनी सहमति कभी भी प्रबंधित करें',
+    benefitTransparencyTitle: 'पूरी पारदर्शिता',
+    benefitTransparencyDescription: 'जानें कि आपका डेटा कैसे उपयोग होता है',
+    benefitServicesTitle: 'बेहतर सेवाएँ',
+    benefitServicesDescription: 'महत्वपूर्ण अपडेट सुरक्षित रूप से पाएँ',
   },
 };

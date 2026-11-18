@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) or [http://localhost:3000/login](http://localhost:3000/login). In development, the demo OTP is `123456`; successful verification opens the protected `/dashboard` route. The OTP is not displayed in production builds. This demo does not send SMS or provide real authentication; connect the OTP handlers to a trusted server-side service before deployment.
+Open [http://localhost:3000](http://localhost:3000). The demo OTP is `123456` in both development and production builds; successful verification opens the protected `/dashboard` route. This demo does not send SMS or provide real authentication; connect the OTP handlers to a trusted server-side service before real deployment.
 
 ```bash
 npm run typecheck

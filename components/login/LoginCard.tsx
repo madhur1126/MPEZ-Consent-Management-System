@@ -2,8 +2,7 @@
 
 import { useRef, useState, type FormEvent } from 'react';
 import type { Messages } from '@/lib/login/i18n';
-import { Button, Input, OTPInput } from '@/components/common';
-import { LoadingSpinner } from './Loader';
+import { Button, Card, Input, LoadingSpinner, OTPInput } from '@/components/common';
 
 const MOBILE_RE = /^[6-9]\d{9}$/;
 const OTP_COOLDOWN_SECONDS = 60;
@@ -23,13 +22,10 @@ export type LoginCardProps = {
 
 function Avatar() {
   return (
-    <svg viewBox="0 0 96 96" aria-hidden="true" className="mx-auto mb-1.5 block h-24 w-24">
+    <svg viewBox="0 0 96 96" aria-hidden="true" style={{ width: 72, height: 72 }} className="mx-auto mb-1 block h-16 w-16 sm:h-[72px] sm:w-[72px]">
       <circle cx="48" cy="48" r="48" style={{ fill: 'var(--icon-bg)' }} />
-      <circle cx="45" cy="35" r="11" style={{ fill: 'var(--ink)' }} />
-      <path d="M23 66c0-11 9-18 22-18s22 7 22 18c0 2-1 3-3 3H26c-2 0-3-1-3-3Z" style={{ fill: 'var(--ink)' }} />
-      <circle cx="68" cy="64" r="13" strokeWidth="3" style={{ fill: 'var(--btn)', stroke: 'var(--card)' }} />
-      <rect x="62" y="63" width="12" height="9" rx="2" fill="#fff" />
-      <path d="M64.5 63v-2.5a3.5 3.5 0 0 1 7 0V63" fill="none" stroke="#fff" strokeWidth="2" />
+      <circle cx="48" cy="35" r="14" style={{ fill: 'var(--ink)' }} />
+      <path d="M20 76c0-15 12-25 28-25s28 10 28 25v3H20Z" style={{ fill: 'var(--ink)' }} />
     </svg>
   );
 }
@@ -125,127 +121,130 @@ export function LoginCard({ t, onRequestOtp, onVerifyOtp }: LoginCardProps) {
     status?.kind === 'success' ? 'text-emerald-700 dark:text-emerald-300' : 'text-login-err'
   }`;
   return (
-    <section
+    <Card
+      as="section"
+      variant="glass"
       aria-labelledby="login-title"
-      className="flex min-h-[455px] min-w-0 flex-col justify-center rounded-[26px] border border-login-card-line bg-login-card px-5 py-6 text-center shadow-login-card backdrop-blur-[6px] sm:min-h-[477px] sm:rounded-[32px] sm:px-9 sm:py-8"
+      className="relative flex min-h-[380px] min-w-0 flex-col justify-center overflow-hidden px-5 py-5 text-center sm:min-h-[390px] sm:px-9 sm:py-6"
     >
-      {!otpRequested && <Avatar />}
-      <h2 id="login-title" className="text-3xl font-extrabold leading-tight text-login-ink sm:text-4xl [html[lang=hi]_&]:leading-snug">
-        {otpRequested ? t.verifyTitle : t.login}
-      </h2>
-      {!otpRequested && (
-        <p className="mx-auto mt-2.5 max-w-[24em] text-[17px] leading-snug text-login-text">
-          {t.loginSub}
-        </p>
-      )}
-
-      <form onSubmit={submitMobile} noValidate className={`${otpRequested ? 'mt-3' : 'mt-6'} text-left`}>
-        <Input
-          ref={mobileRef}
-          id="mobile"
-          name="mobile"
-          format="mobile"
-          readOnly={otpRequested}
-          value={mobile}
-          label={t.mobile}
-          placeholder={t.mobilePlaceholder}
-          aria-invalid={status?.key === 'invalidMobile'}
-          aria-describedby="login-msg"
-          onChange={(event) => {
-            setMobile(event.target.value.replace(/\D/g, '').slice(0, 10));
-            if (status) setStatus(null);
-          }}
-          leftIcon={
-            <svg viewBox="0 0 24 24" fill="currentColor" className="h-[22px] w-[22px] text-login-ink">
-              <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1Z" />
-            </svg>
-          }
-          labelClassName="text-[17px] font-bold text-login-ink"
-          className={`!gap-3.5 !rounded-[14px] !border-[1.5px] !bg-login-field !px-4 !text-login-text focus-within:!border-login-btn focus-within:!ring-0 focus-within:!shadow-[0_0_0_4px_color-mix(in_srgb,var(--btn)_22%,transparent)] ${
-            status?.key === 'invalidMobile' ? '!border-login-err' : '!border-login-field-line'
-          }`}
-          inputClassName="!h-full !bg-transparent !text-lg !text-login-text placeholder:!text-login-placeholder"
-        />
-
+      <span aria-hidden="true" className="pointer-events-none absolute right-0 top-0 h-20 w-20 bg-gradient-to-bl from-blue-200/90 to-blue-50/20 [clip-path:polygon(25%_0,100%_0,100%_100%)]" />
+      <div className="relative -translate-y-2">
+        {!otpRequested && <Avatar />}
+        <h2 id="login-title" className="relative text-2xl font-extrabold leading-tight text-login-ink sm:text-[28px] [html[lang=hi]_&]:leading-snug">
+          {otpRequested ? t.verifyTitle : t.consumerLogin}
+        </h2>
         {!otpRequested && (
-          <>
-            <p id="login-msg" role="alert" className={messageClass}>
-              {message}
-            </p>
-            <Button
-              type="submit"
-              loading={loading && loadingAction === 'request'}
-              disabled={loading && loadingAction !== 'request'}
-              className="!mt-2.5 !w-full !gap-3 !rounded-2xl !bg-login-btn !text-xl !text-login-btn-ink !shadow-[0_12px_24px_-12px_var(--btn)] hover:!bg-login-btn-hover"
-              rightIcon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-[22px] w-[22px]">
-                  <path d="M4 12h15M13 6l6 6-6 6" />
-                </svg>
-              }
-            >
-              {loading ? t.sendingOtp : t.sendOtp}
-            </Button>
-          </>
-        )}
-      </form>
-
-      {otpRequested && (
-        <div className="mt-3 text-left">
-          <div role="status" className="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-200">
-            {t.otpSent}
-          </div>
-          <label className="mb-2 mt-3 block text-[17px] font-bold text-login-ink">{t.otpLabel}</label>
-          <OTPInput
-            length={6}
-            value={otp}
-            onChange={changeOtp}
-            onComplete={(code) => void verifyOtp(code)}
-            autoSubmit
-            label={t.otpLabel}
-            disabled={loading}
-            invalid={otpError}
-            resend={{
-              onResend: requestOtp,
-              label: t.resendOtp,
-              countdownLabel: (seconds) => (
-                <>
-                  {t.resendIn}{' '}
-                  {String(Math.floor(seconds / 60)).padStart(2, '0')}:
-                  {String(seconds % 60).padStart(2, '0')}
-                </>
-              ),
-              cooldownSeconds: OTP_COOLDOWN_SECONDS,
-              disabled: loading,
-              errorLabel: t.resendFailed,
-            }}
-            footerAction={
-              <Button
-                type="button"
-                variant="ghost"
-                size="small"
-                onClick={changeNumber}
-                className="!min-h-9 !px-0 font-semibold text-login-ink underline underline-offset-4"
-              >
-                {t.changeNumber}
-              </Button>
-            }
-          />
-          {loadingAction === 'verify' && (
-            <p role="status" aria-live="polite" className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-login-ink">
-              <LoadingSpinner className="h-4 w-4" />
-              {t.verifyingOtp}
-            </p>
-          )}
-          <p id="login-msg" role="alert" aria-live="polite" className={messageClass}>
-            {status?.key === 'otpSent' ? '' : message}
+          <p className="mx-auto mt-2.5 max-w-[24em] text-[17px] leading-snug text-login-text">
+            {t.loginSub}
           </p>
-          {process.env.NODE_ENV !== 'production' && (
+        )}
+
+        <form onSubmit={submitMobile} noValidate className="mt-3 text-left">
+          <Input
+            ref={mobileRef}
+            id="mobile"
+            name="mobile"
+            format="mobile"
+            readOnly={otpRequested}
+            value={mobile}
+            label={t.mobile}
+            placeholder={t.mobilePlaceholder}
+            aria-invalid={status?.key === 'invalidMobile'}
+            aria-describedby="login-msg"
+            onChange={(event) => {
+              setMobile(event.target.value.replace(/\D/g, '').slice(0, 10));
+              if (status) setStatus(null);
+            }}
+            leftIcon={
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-[22px] w-[22px] text-login-ink">
+                <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1Z" />
+              </svg>
+            }
+            labelClassName="text-[17px] font-bold text-login-ink"
+            className={`!gap-3.5 !rounded-[14px] !border-[1.5px] !bg-login-field !px-4 !text-login-text focus-within:!border-login-btn focus-within:!ring-0 focus-within:!shadow-[0_0_0_4px_color-mix(in_srgb,var(--btn)_22%,transparent)] ${
+              status?.key === 'invalidMobile' ? '!border-login-err' : '!border-login-field-line'
+            }`}
+            inputClassName="!h-full !bg-transparent !text-lg !text-login-text placeholder:!text-login-placeholder"
+          />
+
+          {!otpRequested && (
+            <>
+              <p id="login-msg" role="alert" className={messageClass}>
+                {message}
+              </p>
+              <Button
+                type="submit"
+                loading={loading && loadingAction === 'request'}
+                disabled={loading && loadingAction !== 'request'}
+                className="!mt-2.5 !w-full !gap-3 !rounded-2xl !bg-[linear-gradient(100deg,var(--btn-hover),var(--btn))] !text-xl !text-login-btn-ink !shadow-[0_12px_24px_-12px_var(--btn)] hover:!bg-login-btn-hover"
+                rightIcon={
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-[22px] w-[22px]">
+                    <path d="M4 12h15M13 6l6 6-6 6" />
+                  </svg>
+                }
+              >
+                {loading ? t.sendingOtp : t.sendOtp}
+              </Button>
+            </>
+          )}
+        </form>
+
+        {otpRequested && (
+          <div className="mt-3 text-left">
+            <div role="status" className="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-200">
+              {t.otpSent}
+            </div>
+            <label className="mb-2 mt-3 block text-[17px] font-bold text-login-ink">{t.otpLabel}</label>
+            <OTPInput
+              length={6}
+              value={otp}
+              onChange={changeOtp}
+              onComplete={(code) => void verifyOtp(code)}
+              autoSubmit
+              label={t.otpLabel}
+              disabled={loading}
+              invalid={otpError}
+              resend={{
+                onResend: requestOtp,
+                label: t.resendOtp,
+                countdownLabel: (seconds) => (
+                  <>
+                    {t.resendIn}{' '}
+                    {String(Math.floor(seconds / 60)).padStart(2, '0')}:
+                    {String(seconds % 60).padStart(2, '0')}
+                  </>
+                ),
+                cooldownSeconds: OTP_COOLDOWN_SECONDS,
+                disabled: loading,
+                errorLabel: t.resendFailed,
+              }}
+              footerAction={
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="small"
+                  onClick={changeNumber}
+                  className="!min-h-9 !px-0 font-semibold text-login-ink underline underline-offset-4"
+                >
+                  {t.changeNumber}
+                </Button>
+              }
+            />
+            {loadingAction === 'verify' && (
+              <p role="status" aria-live="polite" className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-login-ink">
+                <LoadingSpinner className="h-4 w-4" />
+                {t.verifyingOtp}
+              </p>
+            )}
+            <p id="login-msg" role="alert" aria-live="polite" className={messageClass}>
+              {status?.key === 'otpSent' ? '' : message}
+            </p>
             <div className="mt-1 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-center text-sm text-blue-900 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-100">
               {t.demoOtp} <strong className="font-bold">123456</strong>
             </div>
-          )}
-        </div>
-      )}
-    </section>
+          </div>
+        )}
+      </div>
+    </Card>
   );
 }

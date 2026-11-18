@@ -12,10 +12,13 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react';
+import { SearchInput } from '../SearchInput';
 
 export interface SearchableDropdownOption<TValue extends string = string> {
   value: TValue;
   label: string;
+  description?: string;
+  searchTerms?: readonly string[];
   disabled?: boolean;
 }
 
@@ -46,23 +49,6 @@ export interface SearchableDropdownProps<TValue extends string = string> {
   className?: string;
   labelClassName?: string;
   triggerClassName?: string;
-}
-
-function SearchIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden="true"
-      className="h-4 w-4 flex-none"
-    >
-      <circle cx="10.8" cy="10.8" r="6.8" />
-      <path d="m16 16 4.5 4.5" />
-    </svg>
-  );
 }
 
 function ChevronIcon({ open }: { open: boolean }) {
@@ -153,7 +139,11 @@ function SearchableDropdownComponent<TValue extends string = string>(
 
   const filteredOptions = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase();
-    return uniqueOptions.filter((option) => option.label.toLocaleLowerCase().includes(normalizedQuery));
+    return uniqueOptions.filter((option) => (
+      [option.label, option.description, ...(option.searchTerms ?? [])]
+        .filter((text): text is string => Boolean(text))
+        .some((text) => text.toLocaleLowerCase().includes(normalizedQuery))
+    ));
   }, [query, uniqueOptions]);
 
   const invalid = Boolean(error);
@@ -316,39 +306,35 @@ function SearchableDropdownComponent<TValue extends string = string>(
       {name && <input type="hidden" name={name} value={selectedValue ?? ''} />}
       {open && (
         <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900">
-          <div className="flex h-10 items-center gap-2 border-b border-slate-100 px-3 text-slate-500 focus-within:text-blue-700 dark:border-slate-800 dark:text-slate-400 dark:focus-within:text-blue-300">
-            <SearchIcon />
-            <input
-              ref={searchRef}
-              type="search"
-              role="combobox"
-              aria-label={searchPlaceholder}
-              aria-autocomplete="list"
-              aria-expanded="true"
-              aria-controls={listboxId}
-              aria-activedescendant={activeIndex >= 0 ? `${dropdownId}-option-${activeIndex}` : undefined}
-              aria-describedby={describedBy}
-              autoComplete="off"
-              value={query}
-              placeholder={searchPlaceholder}
-              onChange={(event) => {
-                const nextQuery = event.target.value;
-                setQuery(nextQuery);
-                setActiveIndex(-1);
-                onSearchChange?.(nextQuery);
-              }}
-              onKeyDown={handleSearchKeyDown}
-              onBlur={(event) => {
-                if (
-                  event.relatedTarget instanceof Node &&
-                  !rootRef.current?.contains(event.relatedTarget)
-                ) {
-                  closeDropdown();
-                }
-              }}
-              className="h-full min-w-0 flex-1 bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-500 dark:text-slate-100 dark:placeholder:text-slate-400"
-            />
-          </div>
+          <SearchInput
+            ref={searchRef}
+            role="combobox"
+            aria-label={searchPlaceholder}
+            aria-autocomplete="list"
+            aria-expanded="true"
+            aria-controls={listboxId}
+            aria-activedescendant={activeIndex >= 0 ? `${dropdownId}-option-${activeIndex}` : undefined}
+            aria-describedby={describedBy}
+            autoComplete="off"
+            value={query}
+            placeholder={searchPlaceholder}
+            onChange={(event) => {
+              const nextQuery = event.target.value;
+              setQuery(nextQuery);
+              setActiveIndex(-1);
+              onSearchChange?.(nextQuery);
+            }}
+            onKeyDown={handleSearchKeyDown}
+            onBlur={(event) => {
+              if (
+                event.relatedTarget instanceof Node &&
+                !rootRef.current?.contains(event.relatedTarget)
+              ) {
+                closeDropdown();
+              }
+            }}
+            containerClassName="!h-10 !rounded-none !border-0 !border-b !border-slate-100 !bg-transparent !px-3 !ring-0 dark:!border-slate-800"
+          />
           {loading && (
             <div role="status" className="flex items-center gap-2 px-3 py-3 text-sm text-slate-500 dark:text-slate-400">
               <span aria-hidden="true" className="mpez-spinner h-4 w-4 border-2" />
@@ -390,6 +376,11 @@ function SearchableDropdownComponent<TValue extends string = string>(
                 >
                   <span className="min-w-0 flex-1">
                     <HighlightedLabel label={option.label} query={query.trim()} />
+                    {option.description && (
+                      <span className="mt-0.5 block truncate text-xs font-normal text-slate-500 dark:text-slate-400">
+                        <HighlightedLabel label={option.description} query={query.trim()} />
+                      </span>
+                    )}
                   </span>
                   {selected && (
                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-4 w-4 flex-none text-blue-700 dark:text-blue-300">

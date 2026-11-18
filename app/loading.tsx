@@ -1,4 +1,4 @@
-import { GlobalLoader } from '@/components/login/Loader';
+import { GlobalLoader } from '@/components/common';
 
 export default function Loading() {
   return <GlobalLoader />;
