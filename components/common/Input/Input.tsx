@@ -8,6 +8,7 @@ import {
   type InputHTMLAttributes,
   type ReactNode,
 } from 'react';
+import { FormField } from '../FormField';
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   format?: 'mobile' | 'aadhaar' | 'pan' | 'consumerNumber';
@@ -82,16 +83,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   }
 
   return (
-    <div className={`w-full ${containerClassName}`}>
-      {label && (
-        <label
-          htmlFor={inputId}
-          className={`mb-1.5 block text-sm font-semibold text-slate-800 dark:text-slate-100 ${labelClassName}`}
-        >
-          {label}
-          {required && <span aria-hidden="true" className="ml-1 text-red-600">*</span>}
-        </label>
-      )}
+    <FormField
+      id={inputId}
+      label={label}
+      required={required}
+      error={displayedError}
+      helperText={helperText}
+      success={success}
+      className={containerClassName}
+      labelClassName={labelClassName}
+    >
       <div
         className={`flex h-[42px] min-w-0 items-center gap-3 rounded-xl border bg-white px-3 text-slate-900 transition focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20 dark:bg-slate-950 dark:text-slate-100 sm:h-[44px] ${
           invalid
@@ -129,18 +130,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           <span className="flex-none text-current">{rightIcon}</span>
         ) : null}
       </div>
-      {displayedError ? (
-        <p id={errorId} role="alert" className="mt-1.5 text-sm text-red-700 dark:text-red-300">
-          {displayedError}
-        </p>
-      ) : helperText ? (
-        <p id={helperId} className="mt-1.5 text-sm text-slate-600 dark:text-slate-400">
-          {helperText}
-        </p>
-      ) : success && typeof success !== 'boolean' ? (
-        <p className="mt-1.5 text-sm text-emerald-700 dark:text-emerald-300">{success}</p>
-      ) : null}
-    </div>
+    </FormField>
   );
 });
 

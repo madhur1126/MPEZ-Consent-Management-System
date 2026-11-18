@@ -3,84 +3,112 @@
 import type { Lang } from '@/lib/login/i18n';
 import type { ConsentAnswer, DashboardCopy } from '@/lib/dashboard/data';
 import { consentQuestions } from '@/lib/dashboard/data';
+import type { MultiIvrsCopy } from '@/lib/dashboard/multiIvrsCopy';
+import type { ConsentSubmission, IVRSConnection } from '@/lib/dashboard/types';
+import { ConfirmDialog } from '@/components/common';
 import { ConsentCard } from './ConsentCard';
-import { Button } from '@/components/common';
+
+function formatSubmissionDate(value: string, lang: Lang) {
+  return new Intl.DateTimeFormat(lang === 'hi' ? 'hi-IN' : 'en-IN', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+    timeZone: 'Asia/Kolkata',
+  }).format(new Date(value));
+}
 
 export function ConsentConfirmationModal({
   lang,
+  consentCopy,
   copy,
+  connection,
   answers,
   readOnly,
+  submission,
   error,
   saving,
   onClose,
   onConfirm,
 }: {
   lang: Lang;
-  copy: DashboardCopy;
+  consentCopy: DashboardCopy;
+  copy: MultiIvrsCopy;
+  connection: IVRSConnection;
   answers: (ConsentAnswer | null)[];
   readOnly: boolean;
+  submission?: ConsentSubmission;
   error: string | null;
   saving: boolean;
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm?: () => void;
 }) {
+  const consumerName = submission?.consumerNameSnapshot ?? connection.consumerName;
+  const address = submission?.addressSnapshot ?? connection.address;
+
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/60 p-0 backdrop-blur-sm sm:items-center sm:p-5"
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget && !saving) onClose();
-      }}
+    <ConfirmDialog
+      isOpen
+      title={readOnly ? copy.openSubmission : copy.confirmationTitle}
+      description={readOnly
+        ? `${connection.ivrsNumber} · ${copy.version} ${submission?.version ?? ''}`
+        : copy.confirmationDescription}
+      closeLabel={readOnly ? copy.close : copy.goBack}
+      onClose={onClose}
+      mode={readOnly ? 'dialog' : 'confirmation'}
+      cancelLabel={readOnly ? copy.close : copy.goBack}
+      confirmLabel={readOnly ? undefined : copy.confirmSubmit}
+      onConfirm={onConfirm}
+      confirmLoading={saving}
+      confirmDisabled={saving}
+      size="large"
+      bodyClassName="space-y-3"
     >
-      <section
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="consent-modal-title"
-        className="max-h-[92vh] w-full max-w-3xl overflow-hidden rounded-t-3xl bg-white shadow-2xl dark:bg-slate-900 sm:rounded-3xl"
-      >
-        <header className="border-b border-slate-200 px-5 py-5 dark:border-slate-700 sm:px-7">
-          <h2 id="consent-modal-title" className="text-xl font-bold text-slate-950 dark:text-white">
-            {readOnly ? copy.viewSubmitted : copy.modalTitle}
-          </h2>
-          {!readOnly && <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{copy.modalDescription}</p>}
-        </header>
-        <div className="max-h-[calc(92vh-170px)] space-y-3 overflow-y-auto p-4 sm:p-6">
+        <>
+          <dl className="grid gap-3 rounded-2xl bg-blue-50 p-4 text-sm dark:bg-slate-800 sm:grid-cols-2">
+            <div>
+              <dt className="text-xs text-slate-500 dark:text-slate-400">{copy.ivrsNumber}</dt>
+              <dd className="mt-1 font-bold text-blue-800 dark:text-blue-200">{connection.ivrsNumber}</dd>
+            </div>
+            <div>
+              <dt className="text-xs text-slate-500 dark:text-slate-400">{copy.nameSnapshot}</dt>
+              <dd className="mt-1 font-semibold text-slate-900 dark:text-slate-100">{consumerName}</dd>
+            </div>
+            <div className="sm:col-span-2">
+              <dt className="text-xs text-slate-500 dark:text-slate-400">{copy.addressSnapshot}</dt>
+              <dd className="mt-1 break-words font-medium text-slate-800 dark:text-slate-200">{address}</dd>
+            </div>
+            {submission && (
+              <>
+                <div>
+                  <dt className="text-xs text-slate-500 dark:text-slate-400">{copy.submissionId}</dt>
+                  <dd className="mt-1 break-all font-mono text-xs font-medium text-slate-800 dark:text-slate-200">{submission.id}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs text-slate-500 dark:text-slate-400">{copy.submittedStatus}</dt>
+                  <dd className="mt-1 font-medium text-slate-800 dark:text-slate-200">
+                    {submission.status === 'current' ? copy.currentSubmission : copy.supersededSubmission}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs text-slate-500 dark:text-slate-400">{copy.submittedAt}</dt>
+                  <dd className="mt-1 font-medium text-slate-800 dark:text-slate-200">
+                    {formatSubmissionDate(submission.submittedAt, lang)}
+                  </dd>
+                </div>
+              </>
+            )}
+          </dl>
           {consentQuestions.map((question) => (
             <ConsentCard
               key={question.id}
               question={question}
               lang={lang}
-              copy={copy}
+              copy={consentCopy}
               value={answers[question.id - 1] ?? null}
               disabled
             />
           ))}
           {error && <p role="alert" className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800 dark:bg-red-950 dark:text-red-200">{error}</p>}
-        </div>
-        <footer className="flex flex-col-reverse gap-3 border-t border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950 sm:flex-row sm:justify-end sm:px-6">
-          <Button
-            type="button"
-            variant="outline"
-            size="medium"
-            onClick={onClose}
-            disabled={saving}
-            className="!rounded-xl !border-slate-300 !bg-white !px-5 !text-sm !text-slate-700 hover:!bg-slate-100 dark:!border-slate-600 dark:!bg-slate-900 dark:!text-white"
-          >
-            {readOnly ? copy.close : copy.goBack}
-          </Button>
-          {!readOnly && (
-            <Button
-              type="button"
-              onClick={() => void onConfirm()}
-              loading={saving}
-              disabled={saving}
-              className="!rounded-xl !bg-[#0B3F91] !px-5 !text-sm !text-white hover:!bg-[#168BEE]"
-            >
-              {copy.confirmSubmit}
-            </Button>
-          )}
-        </footer>
-      </section>
-    </div>
+        </>
+    </ConfirmDialog>
   );
 }

@@ -6,7 +6,7 @@ import { ConsumerDashboard } from '@/components/dashboard/ConsumerDashboard';
 import { readDemoSession } from '@/lib/login/demoSession';
 import { dashboardCopy } from '@/lib/dashboard/data';
 import { useLang } from '@/lib/login/hooks';
-import { GlobalLoader } from '@/components/login/Loader';
+import { GlobalLoader } from '@/components/common';
 
 export default function DashboardPage() {
   const router = useRouter();

@@ -9,6 +9,7 @@ module.exports = {
       },
       boxShadow: {
         'login-card': 'var(--shadow)',
+        card: '0 1px 2px rgb(15 23 42 / 0.1)',
       },
       colors: {
         login: {

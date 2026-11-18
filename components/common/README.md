@@ -71,3 +71,22 @@ Use the native `type` prop for text, number, email, password, and search inputs.
 - `size`: `small`, `medium`, or `large`.
 - `leftIcon`, `rightIcon`, `loading`, and `fullWidth` are optional.
 - All native button attributes are forwarded. Loading automatically disables the button and sets `aria-busy`.
+
+## Shared primitives
+
+Import the remaining components and their prop types from the same `@/components/common` barrel:
+
+- `SearchableDropdown` for searchable, keyboard-navigable selects.
+- `SearchInput` for standalone search fields and as the input used inside the dropdown.
+- `Checkbox` and `RadioGroup` for labelled and accessible form choices.
+- `Textarea` and `FormField` for multiline fields and shared label/error/help presentation.
+- `Card`, `Badge`, and `EmptyState` for common content, status, and no-data surfaces.
+- `Modal` for the shared responsive dialog shell, including focus management, Escape handling, and optional footer actions.
+- `ConfirmDialog` for common cancel/confirm actions with loading and disabled states.
+- `GlobalLoader` and `LoadingSpinner` for page and inline loading states.
+- `PageHeader` and `Toast` for common page headings and dismissible notifications.
+- `Table` for typed, responsive tabular data with loading, empty, and optional row-action states.
+- `Pagination` for accessible page navigation with configurable labels and disabled state.
+- `Tabs` for controlled or uncontrolled tab panels with keyboard navigation and horizontal or vertical orientation.
+
+`AppLayout` and the shared MPEZ `Header` are exported from `@/components/layout`. The current app has no table-backed, paginated, tabbed, or admin screen to refactor; the generic table, pagination, and tabs are available for future data views.

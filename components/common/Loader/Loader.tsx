@@ -1,26 +1,20 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Logo } from './Logo';
+import { Logo } from '@/components/login/Logo';
 import { messages } from '@/lib/login/i18n';
 import { useLang } from '@/lib/login/hooks';
 
 export function LoadingSpinner({ className = '' }: { className?: string }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={`mpez-spinner ${className}`}
-    />
-  );
+  return <span aria-hidden="true" className={`mpez-spinner ${className}`} />;
 }
 
-export function GlobalLoader({
-  label,
-  visible = true,
-}: {
+export interface GlobalLoaderProps {
   label?: string;
   visible?: boolean;
-}) {
+}
+
+export function GlobalLoader({ label, visible = true }: GlobalLoaderProps) {
   const { lang } = useLang();
   const t = messages[lang];
   const [mounted, setMounted] = useState(visible);
@@ -43,7 +37,7 @@ export function GlobalLoader({
   if (!mounted) return null;
 
   return (
-    <main
+    <div
       role="status"
       aria-live="polite"
       aria-label={label ?? t.loading}
@@ -64,6 +58,6 @@ export function GlobalLoader({
         </p>
         <span className="sr-only">{label ?? t.loading}</span>
       </div>
-    </main>
+    </div>
   );
 }
